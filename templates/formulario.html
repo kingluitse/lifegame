@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crear personaje</title>
+</head>
+<body>
+    {% if session.username %}
+        <form action="/logout" method="get">
+            <button type="submit">Cerrar sesión</button>
+        </form>
+    {% endif %}
+    <h1>Crear tu personaje</h1>
+    <form action="/crear_personaje" method="post">
+        <label for="nombre">Nombre de tu personaje:</label><br>
+        <input type="text" id="nombre" name="nombre"><br><br>
+        <input type="submit" value="Iniciar">
+    </form>
+</body>
+</html>

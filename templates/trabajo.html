@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Trabajo</title>
+</head>
+<body>
+    {% if session.username %}
+        <form action="/logout" method="get">
+            <button type="submit">Cerrar sesión</button>
+        </form>
+    {% endif %}
+    <h1>Trabajo actual: Oficinista</h1>
+    <p>Dinero actual: {{ dinero }} pesos</p>
+    <form action="/trabajar" method="post">
+        <input type="submit" value="Trabajar">
+    </form>
+    <br>
+    <a href="/perfil">← Volver al perfil</a>
+</body>
+</html>

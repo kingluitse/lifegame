@@ -1,0 +1,22 @@
+[
+  {
+    "username": "kingluitse",
+    "password": "12345",
+    "personaje": {
+      "nombre": "Galileous",
+      "dinero": 129,
+      "posesiones": "ropa común",
+      "fecha": "2025-06-17 04:08:41"
+    }
+  },
+  {
+    "username": "luissy",
+    "password": "12345678910",
+    "personaje": {
+      "nombre": "Labiala",
+      "dinero": 116,
+      "posesiones": "ropa común",
+      "fecha": "2025-06-17 04:09:43"
+    }
+  }
+]
