@@ -1,0 +1,41 @@
+<!-- Indica que el documento está escrito en HTML5 -->
+<!DOCTYPE html>
+
+<html>
+<head>
+    <!-- Título que aparece en la pestaña del navegador -->
+    <title>Registro</title>
+
+    <!-- Enlace al archivo de estilos CSS ubicado en la carpeta /static -->
+    <!-- Flask usa la función url_for para encontrar la ruta correcta del archivo estático -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <!-- Encabezado principal de la página -->
+    <h1>Registro</h1>
+
+    <!-- Formulario de registro que enviará los datos por POST a la ruta /registro -->
+    <form action="/registro" method="post">
+        <!-- Campo para ingresar el nombre de usuario -->
+        <label>
+            Usuario: 
+            <input type="text" name="username">
+        </label>
+        <br>
+
+        <!-- Campo para ingresar la contraseña -->
+        <label>
+            Contraseña: 
+            <input type="password" name="password">
+        </label>
+        <br>
+
+        <!-- Botón para enviar el formulario -->
+        <input type="submit" value="Registrar">
+    </form>
+
+    <!-- Enlace para los usuarios que ya tienen cuenta y desean iniciar sesión -->
+    <p>¿Ya tienes cuenta? <a href="/login">Inicia sesión</a></p>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crear personaje</title>
+
+    <!-- Enlaza el archivo de estilos CSS ubicado en la carpeta 'static'.
+         'url_for' asegura que se genere la ruta correcta automáticamente. -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<!-- ====================
+     BARRA DE NAVEGACIÓN SUPERIOR (solo visible si el usuario está en sesión)
+     ==================== -->
+{% if session.username %}
+<nav>
+    <ul class="navbar">
+
+        <!-- Enlace al perfil del personaje -->
+        <li><a href="/perfil">Perfil</a></li>
+
+        <!-- Enlace a la página de trabajo -->
+        <li><a href="/trabajo">Trabajo</a></li>
+
+        <!-- Enlace al ranking global -->
+        <li><a href="/ranking">Ranking</a></li>
+
+        <!-- Enlace a la tienda del personaje -->
+        <li><a href="/tienda">Tienda</a></li>
+
+        <!-- Botón de cerrar sesión, implementado como un formulario -->
+        <li>
+            <form action="/logout" method="get" class="logout-form">
+                <button type="submit" class="logout-button">Cerrar sesión</button>
+            </form>
+        </li>
+    </ul>
+</nav>
+{% endif %}
+
+<!-- ====================
+     FORMULARIO PARA CREAR PERSONAJE NUEVO
+     ==================== -->
+<h1>Crear tu personaje</h1>
+
+<!-- Formulario que envía los datos mediante POST a la ruta '/crear_personaje' -->
+<form action="/crear_personaje" method="post">
+
+    <!-- Campo de entrada para el nombre del personaje -->
+    <label for="nombre">Nombre de tu personaje:</label><br>
+
+    <input type="text" id="nombre" name="nombre"><br><br>
+
+    <!-- Botón para enviar el formulario -->
+    <input type="submit" value="Iniciar">
+</form>
+
+</body>
+</html>

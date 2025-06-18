@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Título de la pestaña del navegador -->
+    <title>Iniciar sesión</title>
+
+    <!-- Enlace al archivo de estilos CSS ubicado en la carpeta 'static'.
+         Se usa 'url_for' para generar correctamente la ruta. -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<!-- ====================
+     ENCABEZADO PRINCIPAL
+     ==================== -->
+<h1>¡Bienvenido! Inicia sesión aquí:</h1>
+
+<!-- ====================
+     FORMULARIO DE LOGIN
+     ====================
+     Este formulario envía los datos al servidor mediante el método POST a la ruta /login.
+     Flask luego procesa la autenticación en el backend.
+-->
+<form action="/login" method="post">
+
+    <!-- Campo para introducir el nombre de usuario -->
+    <label>
+        Usuario:
+        <input type="text" name="username">
+    </label>
+    <br>
+
+    <!-- Campo para introducir la contraseña -->
+    <label>
+        Contraseña:
+        <input type="password" name="password">
+    </label>
+    <br>
+
+    <!-- Botón para enviar el formulario de inicio de sesión -->
+    <input type="submit" value="Entrar">
+</form>
+
+<!-- ====================
+     ENLACE A REGISTRO
+     ====================
+     Ofrece al usuario sin cuenta la posibilidad de registrarse.
+-->
+<p>¿No tienes cuenta? <a href="/registro">Regístrate aquí</a></p>
+
+</body>
+</html>

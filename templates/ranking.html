@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Título que se mostrará en la pestaña del navegador -->
+    <title>Ranking Global</title>
+
+    <!-- Enlace al archivo de estilos CSS (desde la carpeta 'static') -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <!-- ============================
+     BARRA DE NAVEGACIÓN SUPERIOR
+     ============================
+     Visible únicamente si hay sesión activa (usuario logueado).
+-->
+    {% if session.username %}
+    <nav>
+        <ul class="navbar">
+
+            <!-- Acceso directo al perfil del personaje -->
+            <li><a href="/perfil">Perfil</a></li>
+
+            <!-- Sección para realizar trabajos y ganar dinero -->
+            <li><a href="/trabajo">Trabajo</a></li>
+
+            <!-- Vista actual: ranking de todos los personajes -->
+            <li><a href="/ranking">Ranking</a></li>
+
+            <!-- Enlace a la tienda del personaje -->
+            <li><a href="/tienda">Tienda</a></li>
+
+            <!-- Formulario para cerrar la sesión -->
+            <li>
+                <form action="/logout" method="get" class="logout-form">
+                    <button type="submit" class="logout-button">Cerrar sesión</button>
+                </form>
+            </li>
+        </ul>
+    </nav>
+    {% endif %}
+
+    <!-- ============================
+     ENCABEZADO PRINCIPAL
+     ============================ -->
+    <h1>Ranking Global de Jugadores</h1>
+
+    <!-- ============================
+     TABLA DE CLASIFICACIÓN
+     ============================
+     Muestra todos los personajes con su nombre, dinero y fecha de creación.
+     Los datos son enviados desde Flask en la variable 'lista_personajes',
+     ordenados por dinero en orden descendente (de mayor a menor riqueza).
+-->
+    <div class="tabla-contenedor">
+        <table>
+            <tr>
+                <!-- Encabezados de las columnas -->
+                <th>Nombre</th>
+                <th>Dinero</th>
+                <th>Fecha de creación</th>
+            </tr>
+
+            <!-- Recorre la lista de personajes para mostrar cada uno en una fila -->
+            {% for personaje in lista_personajes %}
+            <tr>
+                <td><a href="{{ url_for('ver_perfil', nombre=personaje.nombre) }}">{{ personaje.nombre }}</a></td>
+                <td>{{ personaje.dinero }}</td>
+                <td>{{ personaje.fecha }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+</body>
+
+</html>

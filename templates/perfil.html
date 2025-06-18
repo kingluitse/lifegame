@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Título que aparecerá en la pestaña del navegador -->
+    <title>Perfil</title>
+
+    <!-- Enlace al archivo de estilos CSS ubicado en la carpeta 'static' -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<!-- ============================
+     BARRA DE NAVEGACIÓN SUPERIOR
+     ============================
+     Se muestra solo si hay un usuario autenticado en la sesión.
+-->
+{% if session.username %}
+<nav>
+    <ul class="navbar">
+
+        <!-- Enlace a la vista del perfil -->
+        <li><a href="/perfil">Perfil</a></li>
+
+        <!-- Enlace al área de trabajo del personaje -->
+        <li><a href="/trabajo">Trabajo</a></li>
+
+        <!-- Enlace al ranking de personajes -->
+        <li><a href="/ranking">Ranking</a></li>
+
+        <!-- Enlace a la tienda del personaje -->
+        <li><a href="/tienda">Tienda</a></li>
+
+        <!-- Formulario para cerrar sesión -->
+        <li>
+            <form action="/logout" method="get" class="logout-form">
+                <button type="submit" class="logout-button">Cerrar sesión</button>
+            </form>
+        </li>
+    </ul>
+</nav>
+{% endif %}
+
+<!-- ============================
+     CONTENIDO PRINCIPAL DEL PERFIL
+     ============================ -->
+
+<!-- Título personalizado con el nombre del personaje actual -->
+<h1>Perfil de: {{ nombre }}</h1>
+
+<!-- Información mostrada del personaje -->
+<p>Dinero: {{ dinero }} pesos</p>
+
+<form action="/cambiar_ropa" method="post" style="display: inline;">
+    <p>
+        Ropa actual: 
+        <select name="nueva_ropa" onchange="this.form.submit()" style="font-weight: bold; border: none; background: none; font-size: 1em; cursor: pointer;">
+            {% for prenda in posesiones %}
+                <option value="{{ prenda }}" {% if prenda == ropa_actual %}selected{% endif %}>{{ prenda }}</option>
+            {% endfor %}
+        </select>
+    </p>
+</form>
+
+</body>
+</html>

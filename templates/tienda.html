@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tienda</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+      <!-- ============================
+     BARRA DE NAVEGACIÓN SUPERIOR
+     ============================
+     Visible únicamente si hay sesión activa (usuario logueado).
+-->
+    {% if session.username %}
+    <nav>
+        <ul class="navbar">
+
+            <!-- Acceso directo al perfil del personaje -->
+            <li><a href="/perfil">Perfil</a></li>
+
+            <!-- Sección para realizar trabajos y ganar dinero -->
+            <li><a href="/trabajo">Trabajo</a></li>
+
+            <!-- Vista actual: ranking de todos los personajes -->
+            <li><a href="/ranking">Ranking</a></li>
+
+            <!-- Enlace a la tienda del personaje -->
+            <li><a href="/tienda">Tienda</a></li>
+
+            <!-- Formulario para cerrar la sesión -->
+            <li>
+                <form action="/logout" method="get" class="logout-form">
+                    <button type="submit" class="logout-button">Cerrar sesión</button>
+                </form>
+            </li>
+        </ul>
+    </nav>
+    {% endif %}
+
+<h1>Tienda</h1>
+
+<p>Dinero disponible: {{ dinero }} pesos</p>
+
+<ul class="lista-productos">
+    {% for producto in productos %}
+    <li class="producto-item">
+        <span class="producto-nombre">{{ producto.nombre }}</span>
+        <span class="producto-precio">{{ producto.precio }} pesos</span>
+        <form action="/comprar" method="post">
+            <input type="hidden" name="producto" value="{{ producto.nombre }}">
+            <input type="hidden" name="precio" value="{{ producto.precio }}">
+            <input type="submit" value="Comprar" class="boton-pequeno">
+        </form>
+    </li>
+    {% endfor %}
+</ul>
+</body>
+</html>
+
+<!-- ESTA PARTE ANTES ME DECÍA ABAJO LA ROPA QUE TENÍA COMPRADA
+ PERO AHORA NO ME SIRVE, LO DEJARÉ COMENTADO MIENTRAS
+ 
+<h2>Ropa comprada</h2>
+<ul>
+    {% for ropa in ropa_comprada %}
+        <li>{{ ropa }}</li>
+    {% else %}
+        <li>No has comprado nada aún.</li>
+    {% endfor %}
+</ul>-->
+

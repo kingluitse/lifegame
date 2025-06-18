@@ -1,0 +1,62 @@
+<!-- Declaramos que este documento es HTML5 -->
+<!DOCTYPE html>
+
+<html>
+<head>
+    <!-- Título de la página que aparece en la pestaña del navegador -->
+    <title>Trabajo</title>
+
+    <!-- Vinculamos una hoja de estilos ubicada en la carpeta /static -->
+    <!-- Flask construye correctamente la URL usando url_for -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<!-- Bloque condicional de Jinja2: si hay una sesión iniciada (usuario logueado), se muestra el menú de navegación -->
+{% if session.username %}
+<nav>
+    <ul class="navbar">
+        <!-- Enlaces de navegación a otras secciones del juego -->
+        <li><a href="/perfil">Perfil</a></li>
+        <li><a href="/trabajo">Trabajo</a></li>
+        <li><a href="/ranking">Ranking</a></li>
+        
+        <!-- Enlace a la tienda del personaje -->
+        <li><a href="/tienda">Tienda</a></li>
+        
+        <!-- Botón para cerrar sesión: se hace mediante un formulario con método GET a la ruta /logout -->
+        <li>
+            <form action="/logout" method="get" class="logout-form">
+                <button type="submit" class="logout-button">Cerrar sesión</button>
+            </form>
+        </li>
+    </ul>
+</nav>
+{% endif %}
+
+<!-- Título principal de la página de trabajo -->
+<h1>Trabajo actual: Vagabundo</h1>
+
+<!-- Mensaje dinámico sobre la ganancia por jornada -->
+<p class="mensaje-salario">
+    Con el trabajo actual ganas {{ salario }} peso{{ 's' if salario != 1 else '' }} por jornada.
+</p>
+
+<!-- MENSAJE ADICIONAL SI HAY BONO POR ROPA -->
+{% if bono_ropa > 0 %}
+<p class="mensaje-bono">
+    Tu {{ ropa_actual }} añade +{{ bono_ropa }} peso{{ 's' if bono_ropa != 1 else '' }} por jornada.
+</p>
+{% endif %}
+
+<!-- Mostramos el dinero actual del personaje, que llega como variable desde Flask -->
+<p>Dinero actual: {{ dinero }} pesos</p>
+
+<!-- Botón para realizar el trabajo y ganar dinero. Al hacer clic, se envía un formulario POST a /trabajar -->
+<form action="/trabajar" method="post">
+    <input type="submit" value="¡Trabaja!">
+</form>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Perfil de {{ nombre }}</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    {% if session.username %}
+    <nav>
+        <ul class="navbar">
+            <li><a href="/perfil">Perfil</a></li>
+            <li><a href="/trabajo">Trabajo</a></li>
+            <li><a href="/ranking">Ranking</a></li>
+            <li><a href="/tienda">Tienda</a></li>
+            <li>
+                <form action="/logout" method="get" class="logout-form">
+                    <button type="submit" class="logout-button">Cerrar sesión</button>
+                </form>
+            </li>
+        </ul>
+    </nav>
+    {% endif %}
+
+    <h1>Perfil de {{ nombre }}</h1>
+    <p><strong>Dinero actual:</strong> {{ dinero }}</p>
+    <p><strong>Vestimenta equipada:</strong> {{ ropa_actual }}</p>
+    <p><strong>Creado por:</strong> {{ creado_por }}</p>
+
+</body>
+</html>
