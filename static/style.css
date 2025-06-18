@@ -1,0 +1,276 @@
+/* ----------------------- */
+/* Estilos globales básicos */
+/* ----------------------- */
+
+/* Estilo base para todo el cuerpo de la página */
+body {
+    background-color: #f4f4f4;       /* Color gris muy claro para fondo suave */
+    font-family: Arial, sans-serif;  /* Fuente legible y común */
+    padding: 20px;                   /* Espacio interno para que no quede pegado al borde */
+    margin: 0;                      /* Quita margen externo predeterminado del navegador */
+}
+
+/* Encabezados principales */
+h1 {
+    color: #333;                    /* Gris oscuro para buena legibilidad sin ser negro puro */
+    margin-bottom: 20px;            /* Separación debajo del título para mejor lectura */
+}
+
+/* --------------------- */
+/* Estilo para el mensaje de salario en la página de trabajo */
+/* --------------------- */
+.mensaje-salario {
+    background-color: #e7f3ff;   /* Fondo azul claro */
+    color: #0056b3;              /* Texto azul oscuro */
+    border: 1px solid #007BFF;   /* Borde azul */
+    padding: 10px 15px;
+    border-radius: 6px;
+    max-width: 400px;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+/* --------------------- */
+/* Estilos para formularios */
+/* --------------------- */
+
+/* Contenedor de formulario */
+form {
+    background-color: #fff;         /* Fondo blanco para contraste */
+    padding: 15px;                  /* Espacio interno para que los elementos no queden pegados */
+    border-radius: 8px;             /* Bordes redondeados para estética moderna */
+    max-width: 400px;               /* Limita ancho máximo para mejor lectura */
+    box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Sombra ligera para destacar el formulario */
+    margin-bottom: 20px;            /* Separación inferior para que no quede pegado a otros elementos */
+}
+
+/* Campos de entrada y botones dentro del formulario */
+input[type="text"],
+input[type="password"],
+input[type="submit"]:not(.boton-pequeno),
+button:not(.boton-pequeno) {
+    padding: 10px;
+    margin-top: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s ease;
+}
+
+/* Cambia el borde al enfocar un campo */
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #007BFF;          /* Azul vibrante para foco */
+    outline: none;                  /* Quita el borde predeterminado de navegador */
+}
+
+/* Botón principal de envío */
+input[type="submit"], button {
+    background-color: #007BFF;      /* Azul distintivo */
+    color: white;                   /* Texto en blanco para contraste */
+    border: none;                   /* Sin borde */
+    cursor: pointer;                /* Cambia cursor para indicar clickeable */
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+/* Efecto hover para botones y submit */
+input[type="submit"]:hover,
+button:hover {
+    background-color: #0056b3;      /* Azul más oscuro al pasar mouse */
+}
+
+/* --------------------- */
+/* Estilos para enlaces */
+/* --------------------- */
+
+a {
+    color: #007BFF;                /* Color azul estándar para links */
+    text-decoration: none;         /* Sin subrayado por defecto */
+    transition: color 0.3s ease;
+}
+
+/* Hover para enlaces */
+a:hover {
+    text-decoration: underline;   /* Subrayado al pasar mouse para feedback */
+    color: #0056b3;               /* Azul más oscuro para indicar interacción */
+}
+
+/* --------------------- */
+/* Barra de navegación */
+/* --------------------- */
+
+.navbar {
+    list-style: none;               /* Quita viñetas del listado */
+    background-color: #222;         /* Fondo oscuro */
+    margin: 0;
+    padding: 0.5em 2em;             /* Espaciado interno para comodidad */
+    display: flex;                  /* Layout flexible para alinear elementos horizontalmente */
+    justify-content: space-around; /* Distribuye espacios equitativamente */
+    align-items: center;            /* Centra verticalmente los items */
+    position: sticky;               /* Se queda fija en la parte superior al hacer scroll */
+    top: 0;
+    z-index: 10;                   /* Por encima de otros elementos para evitar solapamientos */
+}
+
+/* Items de la barra, sin márgenes para alineación precisa */
+.navbar li {
+    margin: 0;
+}
+
+/* Estilo común para links y botones en navbar */
+.navbar a, .navbar button {
+    color: white;                  /* Texto blanco */
+    text-decoration: none;         /* Sin subrayado */
+    font-weight: bold;
+    background: none;              /* Fondo transparente */
+    border: none;                  /* Sin borde */
+    cursor: pointer;
+    padding: 0.5em 1em;            /* Espacio para click cómodo */
+    font-family: inherit;          /* Hereda la fuente general */
+    font-size: 1rem;
+}
+
+/* Hover para elementos de la navbar */
+.navbar a:hover, .navbar button:hover {
+    background-color: #444;        /* Fondo gris oscuro */
+    border-radius: 5px;            /* Bordes redondeados */
+}
+
+/* Transición suave para botones y enlaces */
+button, a {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ------------------------------ */
+/* Formulario de logout en navbar */
+/* ------------------------------ */
+
+/* Evita que el formulario ocupe toda la línea */
+.navbar li form {
+    margin: 0;
+    padding: 0;
+    display: inline;              /* Se mantiene en línea para no romper la barra */
+}
+
+/* Elimina fondo y padding del formulario para que sea invisible */
+.logout-form {
+    margin: 0;
+    padding: 0;
+    background: none;
+    display: inline;
+}
+
+/* Estilo para el botón de cerrar sesión para que parezca un link */
+.logout-button {
+    color: white;
+    background: none;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0.5em 1em;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+/* Hover idéntico al de otros botones en la navbar */
+.logout-button:hover {
+    background-color: #444;
+    border-radius: 5px;
+}
+
+/* ------------------------------ */
+/* Estilos para tablas */
+/* ------------------------------ */
+
+/* Contenedor de tabla para limitar ancho y evitar margen automático */
+.tabla-contenedor {
+    max-width: 700px;             /* Ancho máximo razonable para tablas */
+    margin: 0;                   /* Sin margen automático, para controlar manualmente */
+}
+
+/* Tabla en sí */
+table {
+    width: 100%;                 /* Ocupa todo el espacio disponible */
+    border-collapse: collapse;  /* Evita doble borde en celdas adyacentes */
+    margin-top: 20px;            /* Separación superior */
+    background-color: #fff;      /* Fondo blanco para mejor contraste */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Sombra sutil para resaltar */
+    font-size: 0.95rem;          /* Tamaño legible y compacto */
+}
+
+/* Estilo para encabezados */
+th {
+    background-color: #007BFF;   /* Azul que armoniza con otros elementos */
+    color: white;
+    padding: 10px 12px;
+    text-align: left;            /* Texto alineado a la izquierda */
+}
+
+/* Celdas normales */
+td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #ddd; /* Línea fina para separar filas */
+}
+
+/* Filas pares con color distinto para mejorar legibilidad */
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Efecto hover para filas, ayuda a identificar la fila activa */
+tr:hover {
+    background-color: #e6f0ff;
+}
+
+.lista-productos {
+    list-style: none;
+    padding: 0;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.producto-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 8px 12px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.05);
+    gap: 10px;
+}
+
+.producto-nombre {
+    flex: 2;
+    font-weight: bold;
+}
+
+.producto-precio {
+    flex: 1;
+    color: #555;
+    font-size: 0.95rem;
+    text-align: right;
+}
+
+.producto-item form {
+    flex-shrink: 0;
+    margin: 0;
+}
+
+.boton-pequeno {
+    padding: 4px 8px;
+    font-size: 0.85rem;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.boton-pequeno:hover {
+    background-color: #45a049;
+}
